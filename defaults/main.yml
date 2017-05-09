@@ -1,0 +1,14 @@
+---
+## Which version to use:
+## - 0.7.1 (default)
+zeppelin_version: 0.7.1
+
+## Which environment to deploy:
+## - devel: provision devel-time environment for developing with Zeppelin
+## - build: provision build-time environment for packaging Zeppelin (n/a)
+zeppelin_environment: devel
+
+## Cache directory for holding downloaded/generated files.
+## The default is /vagrant/files so cache persist between boxes.
+zeppelin_cache_dir: /vagrant/files
+

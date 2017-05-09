@@ -1,0 +1,29 @@
+---
+galaxy_info:
+  author: jeffhung
+  description: Ansible playbook for installing Zeppelin on CentOS/Debian Linux
+  license: BSD
+
+  platforms:
+  - name: EL
+    versions:
+     - 6
+# - name: Ubuntu
+#   versions:
+#    - trusty
+
+  galaxy_tags:
+    - cloud
+    - system
+
+dependencies:
+# - { role: git }
+  - { role: jeffhung.java-se, java_variant: jdk7 }
+# - { role: npm }
+# - { role: libfontconfig }
+
+# May only require maven when build
+# Maven in trusty64 is too old (3.0.5) vs. required version (3.1+)
+# - { role: maven }
+  
+

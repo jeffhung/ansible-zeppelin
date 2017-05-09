@@ -1,0 +1,9 @@
+---
+- name: Initiate build process
+  include: build.yml
+  when: zeppelin_environment == 'build'
+
+- name: Initiate install process
+  include: install.yml
+  when: zeppelin_environment != 'build'
+

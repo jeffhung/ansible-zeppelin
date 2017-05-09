@@ -1,0 +1,5 @@
+---
+zeppelin_url_base: "http://www.apache.org/dist/zeppelin"
+
+zeppelin_dir_base: /opt
+
