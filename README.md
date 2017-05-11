@@ -25,21 +25,10 @@ Vagrant.configure("2") do |config|
     v.memory = 1024 # Spark need much larger memory
   end
 
-  # See: https://seven.centos.org/2016/12/updated-centos-vagrant-images-available-v1611-01/
-  # See: https://github.com/dustymabe/vagrant-sshfs
-  # See: https://fedoramagazine.org/vagrant-sharing-folders-vagrant-sshfs/
   if config.vm.box.start_with?("centos/")
-    if Vagrant.has_plugin?("vagrant-vbguest")
-      # See: https://github.com/dotless-de/vagrant-vbguest
-      config.vbguest.no_remote = true
-      config.vm.synced_folder ".", "/vagrant", type: "virtualbox"
-    elsif Vagrant.has_plugin?("vagrant-sshfs")
+    if Vagrant.has_plugin?("vagrant-sshfs")
       config.vm.synced_folder ".", "/vagrant", type: "sshfs"
-    elsif (/darwin/ =~ RUBY_PLATFORM) != nil
-      # See: http://stackoverflow.com/questions/26811089/vagrant-how-to-have-host-platform-specific-provisioning-steps
-      config.vm.synced_folder ".", "/vagrant", type: "nfs"
     else
-      # Fallback to use rsync to sync folder
       config.vm.synced_folder ".", "/vagrant", type: "rsync"
     end
   end
