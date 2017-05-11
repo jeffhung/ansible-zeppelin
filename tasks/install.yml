@@ -51,3 +51,23 @@
   template: src=profile.sh.j2 dest=/etc/profile.d/zeppelin.sh
   become: true
 
+- block:
+
+  - name: Install monit (yum)
+    yum: state=present name=monit
+    when: ansible_pkg_mgr == "yum"
+# - name: Install monit (apt)
+#   apt: state=present name=monit
+#   when: ansible_pkg_mgr == "apt"
+
+  - name: start monit service
+    service: state=started name=monit
+
+  - name: Install zeppelin monitrc
+    template: src=monitrc.j2 dest=/etc/monit.d/zeppelin
+
+  - name: Reload monit
+    monit: state=reloaded name=zeppelin
+
+  become: yes
+

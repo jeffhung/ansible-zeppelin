@@ -1,0 +1,5 @@
+check process zeppelin
+    with pidfile /opt/zeppelin/run/zeppelin-root-{{ ansible_nodename }}.pid
+    start program   = "/opt/zeppelin/bin/zeppelin-daemon.sh start"
+    stop program    = "/opt/zeppelin/bin/zeppelin-daemon.sh stop"
+
